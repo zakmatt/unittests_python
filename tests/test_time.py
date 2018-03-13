@@ -33,11 +33,19 @@ def test_timedistance_v2(a, b, expected):
     assert diff == expected
 
 
-@pytest.mark.parametrize("a,b,expected", [
-    pytest.param(datetime(2001, 12, 12), datetime(2001, 12, 11),
-                 timedelta(1), id='forward'),
-    pytest.param(datetime(2001, 12, 11), datetime(2001, 12, 12),
-                 timedelta(-1), id='backward'),
+@pytest.mark.parametrize('a, b, expected', [
+    pytest.param(
+        datetime(2001, 12, 12),
+        datetime(2001, 12, 11),
+        timedelta(1),
+        id='forward'
+    ),
+    pytest.param(
+        datetime(2001, 12, 11),
+        datetime(2001, 12, 12),
+        timedelta(-1),
+        id='backward'
+    )
 ])
 def test_timedistance_v3(a, b, expected):
     diff = a - b

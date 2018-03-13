@@ -13,6 +13,7 @@ def wallet():
     """return wallet instance with balance of 30"""
     return Wallet(30)
 
+
 def test_default_initial_amount(empty_wallet):
     assert empty_wallet.balance == 0
 

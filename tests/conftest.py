@@ -5,6 +5,7 @@ def pytest_addoption(parser):
         help="run all combinations"
     )
 
+
 def pytest_generate_tests(metafunc):
     if 'param1' in metafunc.fixturenames:
         if metafunc.config.getoption('all'):
@@ -12,3 +13,10 @@ def pytest_generate_tests(metafunc):
         else:
             end = 2
         metafunc.parametrize("param1", range(end))
+
+    # database examples
+    if 'db' in metafunc.fixturenames:
+        metafunc.parametrize('db', ['d1', 'd2'], indirect=True)
+
+    if 'x' and 'y' in metafunc.fixturenames:
+        metafunc.parametrize('x, y', [('a', 'b')], indirect=['x'])
